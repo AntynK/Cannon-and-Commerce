@@ -1,0 +1,9 @@
+# Godot 4+ specific ignores
+.godot/
+.builds/
+/android/
+export_presets.cfg
+*.zip
+
+# IDE
+.vscode/
