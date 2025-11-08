@@ -1,17 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://ij6uqstjvrhq"]
+[gd_scene load_steps=4 format=4 uid="uid://ij6uqstjvrhq"]
 
 [ext_resource type="Script" uid="uid://d8pw4rb7q6a3" path="res://entities/player/player.gd" id="1_abrql"]
-[ext_resource type="Texture2D" uid="uid://x4atfune6qac" path="res://icon.svg" id="1_symyc"]
+[ext_resource type="TileSet" uid="uid://bwfpf82dp4ogl" path="res://assets/tilemap/global.tres" id="2_abrql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
-size = Vector2(127, 128)
+size = Vector2(63, 128)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_abrql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
+position = Vector2(42, 1)
+rotation = 1.5708
 shape = SubResource("RectangleShape2D_abrql")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_symyc")
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(90, 1)
+rotation = 1.5708
+tile_map_data = PackedByteArray("AAAAAP//AAAnAA8AAAD/////AAAnAA8AAAD+////AAAnAA8AAAD+/wAAAAAnAA8AAAD//wAAAAAnAA8AAAAAAAAAAAAnAA8AAAABAAAAAAAnAA8AAAABAP//AAAnAA8AAAABAAEAAAAnAA8AAAAAAAEAAAAnAA8AAAD//wEAAAAnAA8AAAD+/wEAAAAnAA8AAAD+/wIAAAAnAA8AAAD//wIAAAAnAA8AAAAAAAIAAAAnAA8AAAABAAIAAAAnAA8AAAABAAMAAAAnAA8AAAAAAAMAAAAnAA8AAAD//wMAAAAnAA8AAAD+/wMAAAAnAA8AAAD//wQAAAAnAA8AAAAAAAQAAAAnAA8AAAABAAQAAAAnAA8AAAD+/wQAAAAnAA8AAAD//wUAAAAnAA8AAAAAAAUAAAAnAA8AAAABAAUAAAAnAA8AAAD+/wUAAAAnAA8AAAD+/wYAAAAiAAwAAAD//wYAAAAjAAwAAAAAAAYAAAAjAAwAAAABAAYAAAAkAAwAAAD//wcAAAAiAAwAAAAAAAcAAAAkAAwAAAD///7/AAAnAA8AAAAAAP7/AAAnAA8AAAA=")
+tile_set = ExtResource("2_abrql")
