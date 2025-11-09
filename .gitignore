@@ -4,6 +4,7 @@
 /android/
 export_presets.cfg
 *.zip
+*.tmp
 
 # IDE
 .vscode/
