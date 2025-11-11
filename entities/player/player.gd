@@ -5,7 +5,21 @@ const ROTATION_RATE = 45
 const FRICTION = 35
 const MAX_VELOCITY = 100
 
+var in_port: bool = false
+var is_docked: bool = false
+@onready var DockingTimer: Timer = $DockingTimer
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("dock"):
+		DockingTimer.start()
+	if Input.is_action_just_released("dock"):
+		DockingTimer.stop()
+	
 func _physics_process(delta: float) -> void:
+	if is_docked:
+		velocity = velocity.move_toward(Vector2.ZERO, delta * FRICTION)
+		return
+		
 	var direction: Vector2 = get_direction()
 	
 	if Input.is_action_pressed("forward") and velocity.length() <= MAX_VELOCITY:
@@ -24,3 +38,17 @@ func _physics_process(delta: float) -> void:
 	
 func get_direction() -> Vector2:
 	return Vector2(cos(rotation), sin(rotation))
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if not body.is_in_group("ports"):
+		return
+	in_port = true
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if not body.is_in_group("ports"):
+		return
+	in_port = false
+
+func _on_docking_timer_timeout() -> void:
+	if in_port or is_docked:
+		is_docked = not is_docked
