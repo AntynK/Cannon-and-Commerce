@@ -18,10 +18,15 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerManager="*res://common/player_manager.gd"
+ContractManager="*res://common/contract_manager.gd"
 
 [display]
 
 window/stretch/scale_mode="integer"
+
+[editor]
+
+movie_writer/movie_file="D:/code/GodotProjects/g/out.avi"
 
 [global_group]
 

@@ -9,10 +9,17 @@ size = Vector2(188, 90)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_abrql")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileLayers" type="Node2D" parent="."]
+
+[node name="Base" type="TileMapLayer" parent="TileLayers"]
 position = Vector2(90, 1)
 rotation = 1.5708
 tile_map_data = PackedByteArray("AAAAAP//AAAnAA8AAAD/////AAAnAA8AAAD+////AAAnAA8AAAD+/wAAAAAnAA8AAAD//wAAAAAnAA8AAAAAAAAAAAAnAA8AAAABAAAAAAAnAA8AAAABAP//AAAnAA8AAAABAAEAAAAnAA8AAAAAAAEAAAAnAA8AAAD//wEAAAAnAA8AAAD+/wEAAAAnAA8AAAD+/wIAAAAnAA8AAAD//wIAAAAnAA8AAAAAAAIAAAAnAA8AAAABAAIAAAAnAA8AAAABAAMAAAAnAA8AAAAAAAMAAAAnAA8AAAD//wMAAAAnAA8AAAD+/wMAAAAnAA8AAAD//wQAAAAnAA8AAAAAAAQAAAAnAA8AAAABAAQAAAAnAA8AAAD+/wQAAAAnAA8AAAD//wUAAAAnAA8AAAAAAAUAAAAnAA8AAAABAAUAAAAnAA8AAAD+/wUAAAAnAA8AAAD+/wYAAAAiAAwAAAD//wYAAAAjAAwAAAAAAAYAAAAjAAwAAAABAAYAAAAkAAwAAAD//wcAAAAiAAwAAAAAAAcAAAAkAAwAAAD///7/AAAnAA8AAAAAAP7/AAAnAA8AAAA=")
+tile_set = ExtResource("2_abrql")
+
+[node name="Decor" type="TileMapLayer" parent="TileLayers"]
+position = Vector2(-6, 0)
+tile_map_data = PackedByteArray("AAD/////AAAtAAAAAAD//wAAAAAtAAAAAAA=")
 tile_set = ExtResource("2_abrql")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

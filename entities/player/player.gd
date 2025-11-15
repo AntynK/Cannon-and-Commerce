@@ -1,22 +1,23 @@
 extends CharacterBody2D
 
-const ACCELERATION_RATE = 55
-const ROTATION_RATE = 45
-const FRICTION = 35
-const MAX_VELOCITY = 100
+const ACCELERATION_RATE := 55
+const ROTATION_RATE := 45
+const FRICTION := 35
+const MAX_VELOCITY := 100
 
-var in_port: bool = false
-var is_docked: bool = false
 @onready var DockingTimer: Timer = $DockingTimer
+@export var HUD: PlayerHUD
+
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("dock"):
 		DockingTimer.start()
 	if Input.is_action_just_released("dock"):
 		DockingTimer.stop()
-	
+
+
 func _physics_process(delta: float) -> void:
-	if is_docked:
+	if PlayerManager.is_docked:
 		velocity = velocity.move_toward(Vector2.ZERO, delta * FRICTION)
 		return
 		
@@ -36,19 +37,29 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		velocity = velocity.move_toward(Vector2.ZERO, delta * FRICTION)
 	
+
 func get_direction() -> Vector2:
 	return Vector2(cos(rotation), sin(rotation))
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("ports"):
 		return
-	in_port = true
+	PlayerManager.entered_port(body)
+
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if not body.is_in_group("ports"):
 		return
-	in_port = false
+	PlayerManager.exited_port()
+
 
 func _on_docking_timer_timeout() -> void:
-	if in_port or is_docked:
-		is_docked = not is_docked
+	if PlayerManager.in_port or PlayerManager.is_docked:
+		if PlayerManager.is_docked:
+			HUD.zoom_in()
+		else:
+			HUD.show_port_title()
+			HUD.zoom_out()
+			HUD.make_contracts()
+		PlayerManager.is_docked = not PlayerManager.is_docked

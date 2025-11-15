@@ -1,0 +1,31 @@
+class_name PlayerHUD extends CanvasLayer
+
+@export var Camera: Camera2D
+
+@onready var PortTitle: Label = $PortTitle
+
+func show_port_title() -> void:
+	PortTitle.visible = true
+	PortTitle.text = PlayerManager.port.title
+	var tween := Camera.create_tween()
+	tween.tween_property(PortTitle, "modulate", Color(1, 1, 1, 1), 0.5)
+	tween.tween_interval(3)
+	tween.tween_property(PortTitle, "modulate", Color(1, 1, 1, 0), 1)
+	tween.tween_callback(func(): PortTitle.visible = false)
+	
+	
+func zoom_out() -> void:
+	make_transition(Camera, "zoom", Vector2(0.5, 0.5), 1)
+
+
+func zoom_in() -> void:
+	make_transition(Camera, "zoom", Vector2(1, 1), 1)
+
+
+func make_transition(obj, property: String, final_value, duration: float) -> void:
+	var tween := Camera.create_tween()
+	tween.tween_property(obj, property, final_value, duration)
+
+
+func make_contracts() -> void:
+	print(ContractManager.generate_contracts())
