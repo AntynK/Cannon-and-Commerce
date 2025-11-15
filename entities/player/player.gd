@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-const ACCELERATION_RATE := 55
+const ACCELERATION_RATE := 100
 const ROTATION_RATE := 45
 const FRICTION := 35
-const MAX_VELOCITY := 100
+const MAX_VELOCITY := 150
 
 @onready var DockingTimer: Timer = $DockingTimer
 @export var HUD: PlayerHUD
@@ -59,7 +59,9 @@ func _on_docking_timer_timeout() -> void:
 		if PlayerManager.is_docked:
 			HUD.zoom_in()
 		else:
+			PlayerManager.check_contracts()
 			HUD.show_port_title()
 			HUD.zoom_out()
 			HUD.make_contracts()
+
 		PlayerManager.is_docked = not PlayerManager.is_docked

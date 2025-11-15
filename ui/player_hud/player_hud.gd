@@ -28,4 +28,5 @@ func make_transition(obj, property: String, final_value, duration: float) -> voi
 
 
 func make_contracts() -> void:
-	print(ContractManager.generate_contracts())
+	var ports = ContractManager.generate_contracts()
+	PlayerManager.accept_contract(ports.pick_random())

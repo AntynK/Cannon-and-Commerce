@@ -1,6 +1,6 @@
 extends Node
 
-const REP_0_DISTANCE_THRESHOLD := 1500
+const REP_0_DISTANCE_THRESHOLD := 2000
 const MAX_CARGO_VALUE := 5
 const MAX_CONTRACT_COUNT := 5
 
@@ -9,6 +9,7 @@ class Contract:
 	var destination := ""
 	var distance := 0
 	var cargo_value := 0
+	var cargo_load := 0
 	var penalty := 0.0
 	var reward := 0.0
 
@@ -20,11 +21,7 @@ class Contract:
 		cargo_value = value
 		reward = distance / 100.0 * cargo_value
 		penalty = reward + cargo_value * 10
-
-
-	func can_be_accepted() -> bool:
-		return PlayerManager.port.title == source
-	
+		cargo_load = cargo_value * 4
 
 	func _to_string() -> String:
 		return "Contract<source_port=%s, destination_port=%s, distance=%s, cargo_value=%s, penalty=%s, reward=%s>" % [source, destination, distance, cargo_value, penalty, reward]
@@ -38,7 +35,7 @@ func _generate_contracts_0_rep() -> Array[Contract]:
 		if port == PlayerManager.port:
 			continue
 
-		if PlayerManager.port.global_position.distance_to(port.global_position) < 2000:
+		if PlayerManager.port.global_position.distance_to(port.global_position) < REP_0_DISTANCE_THRESHOLD:
 			contracts.append(Contract.new(PlayerManager.port, port, 1))
 			
 	contracts.shuffle()
@@ -64,6 +61,6 @@ func _generate_contracts_normal_rep() -> Array[Contract]:
 
 
 func generate_contracts() -> Array[Contract]:
-	if PlayerManager.reputation == 0:
+	if PlayerManager.reputation <= 0:
 		return _generate_contracts_0_rep()
 	return _generate_contracts_normal_rep()
