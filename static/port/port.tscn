@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=4 uid="uid://dswm4girwo85i"]
+
+[ext_resource type="Script" uid="uid://u41s8yddk8oh" path="res://static/port/port.gd" id="1_fhy0p"]
+[ext_resource type="TileSet" uid="uid://bwfpf82dp4ogl" path="res://assets/tilemap/global.tres" id="1_sv8v4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhy0p"]
+size = Vector2(62, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q023k"]
+size = Vector2(82.5, 131.5)
+
+[node name="Port" type="StaticBody2D" groups=["ports"]]
+script = ExtResource("1_fhy0p")
+port_name = "ENTER PORT NAME"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 56)
+shape = SubResource("RectangleShape2D_fhy0p")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAIAAIAAAD//wAAAAAIAAIAAAD//wEAAAAIAAIAAAAAAAEAAAAIAAIAAAAAAAIAAAAIAAIAAAD//wIAAAAIAAIAAAD//wMAAAAIAAIAAAAAAAMAAAAIAAIAAAD+/wAAAAAIAAIAAAD+/wEAAAAIAAIAAAD+/wIAAAAIAAIAAAD+/wMAAAAIAAIAAAD+/wQAAAAIAAIAAAD+/wUAAAAIAAIAAAD//wUAAAAIAAIAAAAAAAUAAAAIAAIAAAAAAAQAAAAIAAIAAAD//wQAAAAIAAIAAAABAAAAAAAIAAIAAAABAAEAAAAIAAIAAAABAAIAAAAIAAIAAAABAAMAAAAIAAIAAAABAAQAAAAIAAIAAAABAAUAAAAIAAIAAAABAAYAAAAIAAIAAAAAAAYAAAAIAAIAAAD//wYAAAAIAAIAAAD+/wYAAAAIAAIAAAA=")
+tile_set = ExtResource("1_sv8v4")
+
+[node name="DockingArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DockingArea"]
+position = Vector2(-0.25, 54.25)
+shape = SubResource("RectangleShape2D_q023k")

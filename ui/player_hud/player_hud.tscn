@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuw613txmo54q"]
+
+[ext_resource type="FontFile" uid="uid://42ubl4ejetkj" path="res://assets/fonts/PixelifySans/static/PixelifySans-Bold.ttf" id="1_1m6my"]
+[ext_resource type="Script" uid="uid://cjg2clte5chnc" path="res://ui/player_hud/player_hud.gd" id="1_rtdb5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fcogc"]
+font = ExtResource("1_1m6my")
+font_size = 100
+
+[node name="PlayerHUD" type="CanvasLayer"]
+script = ExtResource("1_rtdb5")
+
+[node name="PortTitle" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -308.0
+offset_top = -258.0
+offset_right = 309.0
+offset_bottom = -138.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Lorem ipsum"
+label_settings = SubResource("LabelSettings_fcogc")
+metadata/_edit_use_anchors_ = true
