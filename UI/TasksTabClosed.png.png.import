@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqihnqm2d4yis"
-path="res://.godot/imported/TasksTabClosed.png.png-9e79102e539d87fe7950f959dc0f26ac.ctex"
+path="res://.godot/imported/TasksTabClosed.png.png-cf71e5933e7b435d38b9292fe5e87528.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/TasksTabClosed.png.png"
-dest_files=["res://.godot/imported/TasksTabClosed.png.png-9e79102e539d87fe7950f959dc0f26ac.ctex"]
+source_file="res://ui/TasksTabClosed.png.png"
+dest_files=["res://.godot/imported/TasksTabClosed.png.png-cf71e5933e7b435d38b9292fe5e87528.ctex"]
 
 [params]
 

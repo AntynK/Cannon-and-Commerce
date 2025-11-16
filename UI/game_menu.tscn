@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3btf0tr6dwc1"]
 
-[ext_resource type="Texture2D" uid="uid://dqqr3e73yfyvu" path="res://UI/MapImage.png" id="1_3y86k"]
-[ext_resource type="Script" uid="uid://7ojbf83tyba3" path="res://UI/tab_menu.gd" id="1_svf8u"]
+[ext_resource type="Texture2D" uid="uid://dqqr3e73yfyvu" path="res://ui/MapImage.png" id="1_3y86k"]
+[ext_resource type="Script" uid="uid://7ojbf83tyba3" path="res://ui/tab_menu.gd" id="1_svf8u"]
 
 [node name="Main" type="CanvasLayer"]
 process_mode = 2
@@ -17,9 +17,10 @@ offset_right = 1.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 1
 
 [node name="Map" type="VBoxContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -51,23 +52,156 @@ texture = ExtResource("1_3y86k")
 layout_mode = 2
 
 [node name="Tasks" type="VBoxContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Tasks"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Tasks"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Tasks/ScrollContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Tasks/VBoxContainer"]
+[node name="Contract1" type="VBoxContainer" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/Tasks/VBoxContainer"]
+[node name="Destination" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract1"]
+layout_mode = 2
+text = "Destination:                                                                                                                                                                                                                                                       "
+
+[node name="ExpireDate" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract1"]
+layout_mode = 2
+text = "Expires in: "
+
+[node name="Reward" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract1"]
+layout_mode = 2
+text = "Reward:"
+
+[node name="Penalty" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract1"]
+layout_mode = 2
+text = "Penalty:"
+
+[node name="CargoPlace" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract1"]
+layout_mode = 2
+text = "Quantity:"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract1"]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Tasks"]
+[node name="Contract2" type="VBoxContainer" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="TabContainer/Tasks/CenterContainer"]
+[node name="Destination" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract2"]
+layout_mode = 2
+text = "Destination:"
+
+[node name="ExpireDate" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract2"]
+layout_mode = 2
+text = "Expires in: "
+
+[node name="Reward" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract2"]
+layout_mode = 2
+text = "Reward:"
+
+[node name="Penalty" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract2"]
+layout_mode = 2
+text = "Penalty:"
+
+[node name="CargoPlace" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract2"]
+layout_mode = 2
+text = "Quantity:"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract2"]
+layout_mode = 2
+
+[node name="Contract3" type="VBoxContainer" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Destination" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract3"]
+layout_mode = 2
+text = "Destination:"
+
+[node name="ExpireDate" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract3"]
+layout_mode = 2
+text = "Expires in: "
+
+[node name="Reward" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract3"]
+layout_mode = 2
+text = "Reward:"
+
+[node name="Penalty" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract3"]
+layout_mode = 2
+text = "Penalty:"
+
+[node name="CargoPlace" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract3"]
+layout_mode = 2
+text = "Quantity:"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract3"]
+layout_mode = 2
+
+[node name="Contract4" type="VBoxContainer" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Destination" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract4"]
+layout_mode = 2
+text = "Destination:"
+
+[node name="ExpireDate" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract4"]
+layout_mode = 2
+text = "Expires in: "
+
+[node name="Reward" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract4"]
+layout_mode = 2
+text = "Reward:"
+
+[node name="Penalty" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract4"]
+layout_mode = 2
+text = "Penalty:"
+
+[node name="CargoPlace" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract4"]
+layout_mode = 2
+text = "Quantity:"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract4"]
+layout_mode = 2
+
+[node name="Contract5" type="VBoxContainer" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Destination" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract5"]
+layout_mode = 2
+text = "Destination:"
+
+[node name="ExpireDate" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract5"]
+layout_mode = 2
+text = "Expires in: "
+
+[node name="Reward" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract5"]
+layout_mode = 2
+text = "Reward:"
+
+[node name="Penalty" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract5"]
+layout_mode = 2
+text = "Penalty:"
+
+[node name="CargoPlace" type="Label" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract5"]
+layout_mode = 2
+text = "Quantity:"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Tasks/ScrollContainer/VBoxContainer/Contract5"]
+layout_mode = 2
+
+[node name="VSlider" type="VSlider" parent="TabContainer/Tasks"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Tasks/VSlider"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 71.920006
+anchor_bottom = 76.83501
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Tasks/VSlider/CenterContainer"]
 layout_mode = 2
 color = Color(0.39308554, 0.3930855, 0.39308548, 1)
 

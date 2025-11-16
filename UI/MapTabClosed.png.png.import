@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bj1sjydh0hkgs"
-path="res://.godot/imported/MapTabClosed.png.png-e2f29587e877fe33d3241f8de0d22860.ctex"
+path="res://.godot/imported/MapTabClosed.png.png-20c6f9f42eaca6f962f300ab4d3008a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/MapTabClosed.png.png"
-dest_files=["res://.godot/imported/MapTabClosed.png.png-e2f29587e877fe33d3241f8de0d22860.ctex"]
+source_file="res://ui/MapTabClosed.png.png"
+dest_files=["res://.godot/imported/MapTabClosed.png.png-20c6f9f42eaca6f962f300ab4d3008a4.ctex"]
 
 [params]
 
