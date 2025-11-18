@@ -32,6 +32,7 @@ func accept_contract(contract: ContractManager.Contract) -> void:
 	if can_be_accepted(contract):
 		contracts.append(contract)
 		loaded_cargo += contract.cargo_load
+		print(contracts)
 
 
 func contract_completed(contract: ContractManager.Contract) -> void:

@@ -32,7 +32,7 @@ position = Vector2(40, 2)
 shape = SubResource("RectangleShape2D_abrql")
 
 [node name="DockingTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.5
 one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

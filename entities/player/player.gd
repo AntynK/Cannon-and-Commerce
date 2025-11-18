@@ -3,7 +3,7 @@ extends CharacterBody2D
 const ACCELERATION_RATE := 100
 const ROTATION_RATE := 45
 const FRICTION := 35
-const MAX_VELOCITY := 150
+const MAX_VELOCITY := 300
 
 @onready var DockingTimer: Timer = $DockingTimer
 @export var HUD: PlayerHUD
