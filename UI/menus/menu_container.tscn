@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmjtg0rlyej5u"]
+
+[ext_resource type="Script" uid="uid://bdo5vhi4c7wtx" path="res://ui/menus/menu_container.gd" id="1_48r07"]
+[ext_resource type="PackedScene" uid="uid://cs30v3icohbew" path="res://ui/menus/pause_menu/pause_menu.tscn" id="2_v435j"]
+[ext_resource type="PackedScene" uid="uid://bcpe784o6ggur" path="res://ui/menus/side_menu/side_menu.tscn" id="3_u37c8"]
+[ext_resource type="PackedScene" uid="uid://dypow7cq07wvn" path="res://ui/menus/map_menu/map_menu.tscn" id="4_a52cw"]
+
+[node name="MenuContainer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_48r07")
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_v435j")]
+visible = false
+
+[node name="SideMenu" parent="." instance=ExtResource("3_u37c8")]
+visible = false
+
+[node name="MapMenu" parent="." instance=ExtResource("4_a52cw")]
+visible = false
+
+[connection signal="resume_pressed" from="PauseMenu" to="." method="_on_pause_menu_resume_pressed"]

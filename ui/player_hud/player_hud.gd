@@ -2,8 +2,25 @@ class_name PlayerHUD extends CanvasLayer
 
 @export var Camera: Camera2D
 
-@onready var PortTitle: Label = $PortTitle
-@onready var Replabel:Label = $Label
+@onready var PortTitle: Label = %PortTitle
+@onready var Balance: Label = %Balance
+@onready var Reputation: Label = %Reputation
+
+func _ready() -> void:
+	PortTitle.visible = false
+	update_player_stats()
+
+
+func on_docked() -> void:
+	show_port_title()
+	zoom_out()
+	update_player_stats()
+
+
+func update_player_stats() -> void:
+	Balance.text = "$$$: %s" % str(PlayerManager.balance).pad_decimals(2)
+	Reputation.text = "Rep: %s" % str(PlayerManager.reputation)
+
 
 func show_port_title() -> void:
 	PortTitle.visible = true
@@ -26,7 +43,3 @@ func zoom_in() -> void:
 func make_transition(obj, property: String, final_value, duration: float) -> void:
 	var tween := Camera.create_tween()
 	tween.tween_property(obj, property, final_value, duration)
-
-func make_contracts() -> void:
-	var ports = ContractManager.generate_contracts()
-	PlayerManager.accept_contract(ports.pick_random())

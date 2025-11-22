@@ -56,12 +56,12 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _on_docking_timer_timeout() -> void:
 	if PlayerManager.in_port or PlayerManager.is_docked:
-		if PlayerManager.is_docked:
-			HUD.zoom_in()
-		else:
-			PlayerManager.check_contracts()
-			HUD.show_port_title()
-			HUD.zoom_out()
-			HUD.make_contracts()
-
 		PlayerManager.is_docked = not PlayerManager.is_docked
+		if PlayerManager.is_docked:
+			PlayerManager.check_contracts()
+			ContractManager.fill_contracts()
+			HUD.on_docked()
+		else:
+			HUD.zoom_in()
+			
+

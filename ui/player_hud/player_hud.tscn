@@ -1,30 +1,182 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuw613txmo54q"]
+[gd_scene load_steps=13 format=3 uid="uid://cuw613txmo54q"]
 
-[ext_resource type="FontFile" uid="uid://42ubl4ejetkj" path="res://assets/fonts/PixelifySans/static/PixelifySans-Bold.ttf" id="1_1m6my"]
 [ext_resource type="Script" uid="uid://cjg2clte5chnc" path="res://ui/player_hud/player_hud.gd" id="1_rtdb5"]
+[ext_resource type="FontFile" uid="uid://cevna8cuq6oo4" path="res://assets/fonts/PixelOperator8/PixelOperator8-Bold.ttf" id="2_8xek4"]
+[ext_resource type="Texture2D" uid="uid://yokxqn8meyrf" path="res://ui/player_hud/assets/integrity_bar/integrity_bar_back.png" id="3_hbnkv"]
+[ext_resource type="Texture2D" uid="uid://c264lghy85umj" path="res://ui/player_hud/assets/integrity_bar/integrity_bar5hp.png" id="4_ohebb"]
+[ext_resource type="FontFile" uid="uid://d07s8k70a4ygo" path="res://assets/fonts/PixelOperator8/PixelOperator8.ttf" id="5_vd2g3"]
+[ext_resource type="Texture2D" uid="uid://dmbkjgbnv333j" path="res://ui/player_hud/assets/time_bar/night_bar.png" id="6_uqc4p"]
+[ext_resource type="Texture2D" uid="uid://w51cxcavsd6o" path="res://ui/player_hud/assets/time_bar/day_bar.png" id="7_rmjiu"]
+[ext_resource type="Texture2D" uid="uid://cw03krxyyn151" path="res://ui/player_hud/assets/time_bar/moon.png" id="9_74l5y"]
+[ext_resource type="Texture2D" uid="uid://7af73gtwgv41" path="res://ui/player_hud/assets/compass_arrow.png" id="10_hyt24"]
+[ext_resource type="Texture2D" uid="uid://dqqr3e73yfyvu" path="res://ui/menus/map_menu/assets/MapImage.png" id="11_aoar4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qpry"]
+bg_color = Color(0.726628, 0.322767, 6.73831e-07, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fcogc"]
-font = ExtResource("1_1m6my")
-font_size = 100
+font = ExtResource("2_8xek4")
+font_size = 64
+outline_size = 8
 
 [node name="PlayerHUD" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_rtdb5")
 
-[node name="PortTitle" type="Label" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -308.0
-offset_top = -258.0
-offset_right = 309.0
-offset_bottom = -138.0
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 60)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8qpry")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PortTitle" type="Label" parent="CenterContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Lorem ipsum"
 label_settings = SubResource("LabelSettings_fcogc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="IntegrityBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.53
+step = 20.0
+value = 100.0
+texture_under = ExtResource("3_hbnkv")
+texture_progress = ExtResource("4_ohebb")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Time" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
 metadata/_edit_use_anchors_ = true
+
+[node name="Time" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/Time"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_vd2g3")
+theme_override_font_sizes/font_size = 24
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/HBoxContainer/MarginContainer/Time"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/MarginContainer/Time/AspectRatioContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+value = 55.0
+texture_under = ExtResource("6_uqc4p")
+texture_progress = ExtResource("7_rmjiu")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/Time/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("9_74l5y")
+stretch_mode = 2
+
+[node name="Reputation" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.2
+theme_override_fonts/font = ExtResource("5_vd2g3")
+theme_override_font_sizes/font_size = 16
+text = "Rep: 0"
+
+[node name="Balance" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.2
+theme_override_fonts/font = ExtResource("5_vd2g3")
+theme_override_font_sizes/font_size = 16
+text = "$$$: 0"
+
+[node name="IntegrityBar" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_right = 0.161
+anchor_bottom = 0.157
+offset_left = 2.0
+offset_right = 12.528
+offset_bottom = 8.264
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="IntegrityBar"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MapBG" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = -1
+anchor_top = 0.561
+anchor_right = 0.261
+anchor_bottom = 1.0
+offset_right = 9.56
+offset_bottom = 2.43994
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="MapBG"]
+layout_mode = 2
+color = Color(0.62318, 0.505281, 0.210316, 1)
+
+[node name="Map" type="TextureRect" parent="."]
+visible = false
+offset_left = 16.0
+offset_top = 373.0
+offset_right = 282.0
+offset_bottom = 632.0
+texture = ExtResource("11_aoar4")
+expand_mode = 1
+
+[node name="Compass" type="AspectRatioContainer" parent="."]
+visible = false
+offset_left = 981.504
+offset_top = 514.512
+offset_right = 1151.5
+offset_bottom = 647.512
+
+[node name="TextureRect" type="TextureRect" parent="Compass"]
+layout_mode = 2
+texture = ExtResource("10_hyt24")

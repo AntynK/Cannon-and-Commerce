@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnrc0uelnqt2t"]
+
+[ext_resource type="Script" uid="uid://ca2bpd25r4141" path="res://ui/contracts_list/contract_item/contract_item.gd" id="1_tmif5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmif5"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[node name="ContractItem" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tmif5")
+script = ExtResource("1_tmif5")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Source" type="Label" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Destination" type="Label" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Destination:"
+
+[node name="ExpireDate" type="Label" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Expires in: "
+
+[node name="CargoValue" type="Label" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Cargo value:"
+
+[node name="Reward" type="Label" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reward:"
+
+[node name="Penalty" type="Label" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Penalty:"
+
+[node name="Quantity" type="Label" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quantity:"
+
+[node name="Status" type="Label" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Status:"
+
+[node name="Buttons" type="HBoxContainer" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Accept" type="Button" parent="VBox/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Accept"
+
+[node name="Decline" type="Button" parent="VBox/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Decline"
+
+[connection signal="pressed" from="VBox/Buttons/Accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="VBox/Buttons/Decline" to="." method="_on_decline_pressed"]
