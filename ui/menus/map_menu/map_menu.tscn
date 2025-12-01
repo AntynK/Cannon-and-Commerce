@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dypow7cq07wvn"]
+[gd_scene load_steps=5 format=3 uid="uid://dypow7cq07wvn"]
 
-[ext_resource type="Texture2D" uid="uid://dqqr3e73yfyvu" path="res://ui/menus/map_menu/assets/MapImage.png" id="1_8ywtr"]
 [ext_resource type="Script" uid="uid://chgk1clj1x78k" path="res://ui/menus/map_menu/map_menu.gd" id="1_stryj"]
+[ext_resource type="Texture2D" uid="uid://bapnnw37b3kxd" path="res://ui/menus/map_menu/assets/player_indexer.png" id="2_2bc15"]
+[ext_resource type="Texture2D" uid="uid://bluguqm4m2w0a" path="res://ui/menus/map_menu/assets/map_image.png" id="2_stryj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stryj"]
 bg_color = Color(0, 0, 0, 0.356863)
@@ -26,24 +27,30 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_stryj")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -321.0
-offset_top = -244.0
-offset_right = 321.0
-offset_bottom = 244.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+[node name="Map" type="TextureRect" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("1_8ywtr")
+texture = ExtResource("2_stryj")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="Indexer" type="TextureRect" parent="MarginContainer/Map"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset = Vector2(8, 8)
+texture = ExtResource("2_2bc15")
+expand_mode = 1
+stretch_mode = 2

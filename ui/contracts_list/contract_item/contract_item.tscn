@@ -25,6 +25,7 @@ layout_mode = 2
 [node name="Source" type="Label" parent="VBox"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Source:"
 
 [node name="Destination" type="Label" parent="VBox"]
 unique_name_in_owner = true
