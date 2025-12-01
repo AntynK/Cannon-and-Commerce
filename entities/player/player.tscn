@@ -1,16 +1,41 @@
-[gd_scene load_steps=3 format=4 uid="uid://ij6uqstjvrhq"]
+[gd_scene load_steps=5 format=3 uid="uid://ij6uqstjvrhq"]
 
 [ext_resource type="Script" uid="uid://d8pw4rb7q6a3" path="res://entities/player/player.gd" id="1_abrql"]
-[ext_resource type="TileSet" uid="uid://bwfpf82dp4ogl" path="res://assets/tilemap/global.tres" id="2_abrql"]
+[ext_resource type="Texture2D" uid="uid://b4tpnhehn6cv" path="res://entities/player/assets/player.png" id="3_sglur"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
+size = Vector2(125, 60)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_abrql"]
+radius = 20.0
+height = 114.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_abrql")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(90, 1)
-rotation = 1.5708
-tile_map_data = PackedByteArray("AAAAAP//AAAnAA8AAAD/////AAAnAA8AAAD+////AAAnAA8AAAD+/wAAAAAnAA8AAAD//wAAAAAnAA8AAAAAAAAAAAAnAA8AAAABAAAAAAAnAA8AAAABAP//AAAnAA8AAAABAAEAAAAnAA8AAAAAAAEAAAAnAA8AAAD//wEAAAAnAA8AAAD+/wEAAAAnAA8AAAD+/wIAAAAnAA8AAAD//wIAAAAnAA8AAAAAAAIAAAAnAA8AAAABAAIAAAAnAA8AAAABAAMAAAAnAA8AAAAAAAMAAAAnAA8AAAD//wMAAAAnAA8AAAD+/wMAAAAnAA8AAAD//wQAAAAnAA8AAAAAAAQAAAAnAA8AAAABAAQAAAAnAA8AAAD+/wQAAAAnAA8AAAD//wUAAAAnAA8AAAAAAAUAAAAnAA8AAAABAAUAAAAnAA8AAAD+/wUAAAAnAA8AAAD+/wYAAAAiAAwAAAD//wYAAAAjAAwAAAAAAAYAAAAjAAwAAAABAAYAAAAkAAwAAAD//wcAAAAiAAwAAAAAAAcAAAAkAAwAAAD///7/AAAnAA8AAAAAAP7/AAAnAA8AAAA=")
-tile_set = ExtResource("2_abrql")
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(3.00011, -1.99978)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-22, 33, 106, 33, 106, 17, 122, 17, 122, -15, 106, -15, 106, -31, -22, -31, -22, -15, -38, -15, -38, 17, -22, 17)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.5, 2)
+shape = SubResource("RectangleShape2D_abrql")
+
+[node name="DockingTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(3.00011, -1.99978)
+rotation = 1.5708
+scale = Vector2(3, 3)
+texture = ExtResource("3_sglur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.00011, 0.000217438)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_abrql")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="DockingTimer" to="." method="_on_docking_timer_timeout"]

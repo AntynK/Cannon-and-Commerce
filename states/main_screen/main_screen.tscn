@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfi2le17pm0oe"]
+
+[ext_resource type="FontFile" uid="uid://cevna8cuq6oo4" path="res://assets/fonts/PixelOperator8/PixelOperator8-Bold.ttf" id="1_lye7i"]
+[ext_resource type="Script" uid="uid://dnmcjc5parnd2" path="res://states/main_screen/main_screen.gd" id="1_oamys"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_oamys"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_rsffr"]
+events = [SubResource("InputEventKey_oamys")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_8v0ga"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_aokry"]
+events = [SubResource("InputEventKey_8v0ga")]
+
+[node name="MainScreen" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_oamys")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -390.0
+offset_right = 390.0
+offset_bottom = 148.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 100
+
+[node name="Title" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lye7i")
+theme_override_font_sizes/font_size = 48
+text = "Cannon & commerce"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -56.0
+offset_right = 260.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+shortcut = SubResource("Shortcut_rsffr")
+text = "Play"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+shortcut = SubResource("Shortcut_aokry")
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

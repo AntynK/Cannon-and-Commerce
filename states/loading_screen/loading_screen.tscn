@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://clrh4ukln73xi"]
+
+[ext_resource type="Script" uid="uid://c6rg8qx2jic66" path="res://states/loading_screen/loading_screen.gd" id="1_2smgf"]
+[ext_resource type="FontFile" uid="uid://d07s8k70a4ygo" path="res://assets/fonts/PixelOperator8/PixelOperator8.ttf" id="2_wsrnd"]
+
+[node name="LoadingScreen" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_2smgf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+autostart = true
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Info" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wsrnd")
+text = "Text"
+
+[node name="LoadingStatus" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

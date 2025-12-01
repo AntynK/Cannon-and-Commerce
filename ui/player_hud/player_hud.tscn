@@ -1,0 +1,222 @@
+[gd_scene load_steps=22 format=3 uid="uid://cuw613txmo54q"]
+
+[ext_resource type="Script" uid="uid://cjg2clte5chnc" path="res://ui/player_hud/player_hud.gd" id="1_rtdb5"]
+[ext_resource type="FontFile" uid="uid://cevna8cuq6oo4" path="res://assets/fonts/PixelOperator8/PixelOperator8-Bold.ttf" id="2_8xek4"]
+[ext_resource type="Texture2D" uid="uid://yokxqn8meyrf" path="res://ui/player_hud/assets/integrity_bar/integrity_bar_back.png" id="3_hbnkv"]
+[ext_resource type="Texture2D" uid="uid://c264lghy85umj" path="res://ui/player_hud/assets/integrity_bar/integrity_bar5hp.png" id="4_ohebb"]
+[ext_resource type="FontFile" uid="uid://d07s8k70a4ygo" path="res://assets/fonts/PixelOperator8/PixelOperator8.ttf" id="5_vd2g3"]
+[ext_resource type="PackedScene" uid="uid://bcs0o14eky13o" path="res://ui/time_slider/time_slider.tscn" id="6_w7jxt"]
+[ext_resource type="Texture2D" uid="uid://cyj187uqmc608" path="res://ui/time_slider/assets/moon.png" id="7_8qpry"]
+[ext_resource type="Texture2D" uid="uid://cc0daqfcsgish" path="res://ui/time_slider/assets/sun.png" id="8_8xek4"]
+[ext_resource type="Texture2D" uid="uid://detwigs2oy76i" path="res://assets/kenney_input_prompts/Keyboard & Mouse/keyboard_tab_icon_outline.svg" id="9_vd2g3"]
+[ext_resource type="Texture2D" uid="uid://d4iri0ovapy7" path="res://assets/kenney_input_prompts/Keyboard & Mouse/keyboard_m_outline.svg" id="10_hbnkv"]
+[ext_resource type="Texture2D" uid="uid://bs1nrkx7f0mng" path="res://ui/player_hud/assets/radial_button/otline.png" id="12_uqc4p"]
+[ext_resource type="Texture2D" uid="uid://coy3igmy2eurt" path="res://ui/player_hud/assets/radial_button/progress.png" id="13_rmjiu"]
+[ext_resource type="Texture2D" uid="uid://0mkgnacru4gj" path="res://assets/kenney_input_prompts/Keyboard & Mouse/keyboard_b.svg" id="13_vd2g3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qpry"]
+bg_color = Color(0.726628, 0.322767, 6.73831e-07, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fcogc"]
+font = ExtResource("2_8xek4")
+font_size = 80
+
+[sub_resource type="InputEventKey" id="InputEventKey_8xek4"]
+device = -1
+keycode = 4194306
+
+[sub_resource type="Shortcut" id="Shortcut_ohebb"]
+events = [SubResource("InputEventKey_8xek4")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_hbnkv"]
+device = -1
+keycode = 77
+unicode = 109
+
+[sub_resource type="Shortcut" id="Shortcut_vd2g3"]
+events = [SubResource("InputEventKey_hbnkv")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_vd2g3"]
+device = -1
+pressed = true
+keycode = 66
+unicode = 98
+
+[sub_resource type="Shortcut" id="Shortcut_uqc4p"]
+events = [SubResource("InputEventKey_vd2g3")]
+
+[node name="PlayerHUD" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_rtdb5")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 60)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8qpry")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PortTitle" type="Label" parent="CenterContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Lorem ipsum"
+label_settings = SubResource("LabelSettings_fcogc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="IntegrityBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.53
+step = 20.0
+value = 100.0
+texture_under = ExtResource("3_hbnkv")
+texture_progress = ExtResource("4_ohebb")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Time" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
+theme_override_constants/separation = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="Time" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/Time"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_vd2g3")
+theme_override_font_sizes/font_size = 24
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeSlider" parent="MarginContainer/HBoxContainer/MarginContainer/Time" instance=ExtResource("6_w7jxt")]
+layout_mode = 2
+Moon = ExtResource("7_8qpry")
+Sun = ExtResource("8_8xek4")
+
+[node name="Reputation" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.2
+theme_override_fonts/font = ExtResource("5_vd2g3")
+theme_override_font_sizes/font_size = 16
+text = "Rep: 0"
+
+[node name="Balance" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.2
+theme_override_fonts/font = ExtResource("5_vd2g3")
+theme_override_font_sizes/font_size = 16
+text = "$$$: 0"
+
+[node name="ButtonHelper" type="MarginContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -33.0
+offset_right = 83.0
+offset_bottom = 33.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonHelper"]
+layout_mode = 2
+
+[node name="Contracts" type="Button" parent="ButtonHelper/VBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+shortcut = SubResource("Shortcut_ohebb")
+text = "Contracts"
+icon = ExtResource("9_vd2g3")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Map" type="Button" parent="ButtonHelper/VBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+toggle_mode = true
+shortcut = SubResource("Shortcut_vd2g3")
+text = "Map"
+icon = ExtResource("10_hbnkv")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Dock" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Dock"]
+layout_mode = 2
+
+[node name="DokingProgress" type="TextureProgressBar" parent="Dock/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+fill_mode = 4
+texture_over = ExtResource("12_uqc4p")
+texture_progress = ExtResource("13_rmjiu")
+
+[node name="DockButton" type="Button" parent="Dock/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_mode = 0
+disabled = true
+shortcut = SubResource("Shortcut_uqc4p")
+text = "Dock"
+icon = ExtResource("13_vd2g3")
+icon_alignment = 2
+expand_icon = true
+
+[connection signal="pressed" from="ButtonHelper/VBoxContainer/Contracts" to="." method="_on_contracts_pressed"]
+[connection signal="pressed" from="ButtonHelper/VBoxContainer/Map" to="." method="_on_map_pressed"]

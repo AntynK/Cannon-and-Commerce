@@ -35,4 +35,4 @@ git commit -m "Description of changes"
 ```bash
 git push origin <your branch with descriptive name, from step 2>
 ```
-After that, open GitHub and create a pull request with a descriptive name.
+After that, open GitHub and create a pull request and provide detailed description.

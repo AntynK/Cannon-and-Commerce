@@ -2,6 +2,7 @@
 .godot/
 .builds/
 /android/
+export/
 export_presets.cfg
 *.zip
 *.tmp
