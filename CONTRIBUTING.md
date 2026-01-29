@@ -10,7 +10,7 @@ Our rules:
 ## Workflow for contributors
 ### 1. Clone repo:
 ```bash
-git clone https://github.com/AntynK/GameOff2025Jam.git
+git clone https://github.com/AntynK/Cannon-and-Commerce.git
 ```
 If you have already done this, update it:
 ```bash
