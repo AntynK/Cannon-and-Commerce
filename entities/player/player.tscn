@@ -24,17 +24,18 @@ shape = SubResource("RectangleShape2D_abrql")
 wait_time = 0.5
 one_shot = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.00011, 0.000217438)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_abrql")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visibility_layer = 2
 texture_filter = 1
 position = Vector2(3.00011, -1.99978)
 rotation = 1.5708
 scale = Vector2(3, 3)
 texture = ExtResource("3_sglur")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.00011, 0.000217438)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_abrql")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

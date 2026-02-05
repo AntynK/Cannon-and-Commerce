@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgbjgrkj4ltwm"]
+
+[ext_resource type="Script" uid="uid://dnel8c27vpe5r" path="res://ui/map_handler/map_handler.gd" id="1_c2piq"]
+
+[node name="MapHandler" type="Node"]
+script = ExtResource("1_c2piq")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+disable_3d = true
+canvas_cull_mask = 4294967293
+size = Vector2i(1072, 568)
+render_target_update_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+visibility_layer = 5
+position = Vector2(-1251.97, 1717.97)
+zoom = Vector2(0.069, 0.069)

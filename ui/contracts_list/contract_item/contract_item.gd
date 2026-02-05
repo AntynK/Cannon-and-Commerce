@@ -38,6 +38,7 @@ func setup(contract: ContractManager.Contract, show_buttons: bool, can_be_accept
 	else:
 		Buttons.hide()
 
+
 func cross_labels() -> void:
 	var labels: Array[Label] = [Source, Destination, ExpireDate, Reward, Penalty, Quantity, CargoValue, Status]
 	for label in labels:
