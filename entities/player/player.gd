@@ -7,12 +7,14 @@ const MAX_VELOCITY := 170
 
 
 @onready var DockingTimer: Timer = $DockingTimer
+@onready var MapSprite: Sprite2D = $MapSprite
 var prev_velocity: Vector2
 
 
 func _ready() -> void:
 	PlayerManager.player_position = global_position
 	PlayerManager.player_rotation = rotation
+	MapSprite.visible = true
 
 
 func _process(_delta: float) -> void:

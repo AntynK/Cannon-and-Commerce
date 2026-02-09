@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cuw613txmo54q"]
+[gd_scene load_steps=23 format=3 uid="uid://cuw613txmo54q"]
 
 [ext_resource type="Script" uid="uid://cjg2clte5chnc" path="res://ui/player_hud/player_hud.gd" id="1_rtdb5"]
 [ext_resource type="FontFile" uid="uid://cevna8cuq6oo4" path="res://assets/fonts/PixelOperator8/PixelOperator8-Bold.ttf" id="2_8xek4"]
@@ -44,6 +44,11 @@ unicode = 98
 
 [sub_resource type="Shortcut" id="Shortcut_uqc4p"]
 events = [SubResource("InputEventKey_vd2g3")]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vd2g3"]
+font = ExtResource("2_8xek4")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
 
 [node name="PlayerHUD" type="CanvasLayer"]
 process_mode = 3
@@ -217,6 +222,15 @@ text = "Dock"
 icon = ExtResource("13_vd2g3")
 icon_alignment = 2
 expand_icon = true
+
+[node name="FPSLabel" type="Label" parent="."]
+visible = false
+offset_left = 1.0
+offset_top = 611.0
+offset_right = 97.0
+offset_bottom = 643.0
+text = "FPS"
+label_settings = SubResource("LabelSettings_vd2g3")
 
 [connection signal="pressed" from="ButtonHelper/VBoxContainer/Contracts" to="." method="_on_contracts_pressed"]
 [connection signal="pressed" from="ButtonHelper/VBoxContainer/Map" to="." method="_on_map_pressed"]

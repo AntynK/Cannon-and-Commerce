@@ -36,8 +36,9 @@ process_mode = 1
 script = ExtResource("1_33cqx")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-process_mode = 1
+process_mode = 3
 visible = false
+visibility_layer = 2
 color = Color(0.729412, 0.72549, 0.741176, 1)
 script = ExtResource("2_wn6fr")
 day_night_gradient = SubResource("Gradient_wn6fr")
