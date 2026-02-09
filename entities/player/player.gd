@@ -7,6 +7,7 @@ const MAX_VELOCITY := 170
 
 
 @onready var DockingTimer: Timer = $DockingTimer
+var prev_velocity: Vector2
 
 
 func _ready() -> void:
@@ -50,7 +51,9 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, delta * FRICTION)
 	PlayerManager.player_position = global_position
 	PlayerManager.player_rotation = rotation
-
+	if prev_velocity != velocity:
+		EventManager.player_velocity_changed.emit(velocity)
+		prev_velocity = velocity
 
 func get_direction() -> Vector2:
 	return Vector2(cos(rotation), sin(rotation))
