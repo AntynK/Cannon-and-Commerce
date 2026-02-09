@@ -9,6 +9,7 @@ class_name PlayerHUD extends CanvasLayer
 @onready var DokingProgress: TextureProgressBar = %DokingProgress
 @onready var Dock: MarginContainer = %Dock
 @onready var DockButton: Button = %DockButton
+@onready var FPSLabel: Label = $FPSLabel
 
 
 func _ready() -> void:
@@ -37,7 +38,7 @@ func dock(progress: float) -> void:
 	
 func _process(_delta: float) -> void:
 	TimeLabel.text = "%s:%s" % [str(TimeManager.get_hours()).pad_zeros(2), str(TimeManager.get_mins()).pad_zeros(2)]
-
+	FPSLabel.text = "FPS:" + str(Engine.get_frames_per_second())
 
 func on_docked() -> void:
 	show_port_title()

@@ -7,7 +7,7 @@ const MINUTE := 60
 const HOUR := 60
 const DAY := 24
 
-const GAME_MINUTE := 0.2 # Treat game minute as real world second
+const GAME_MINUTE := 0.2
 const GAME_HOUR := GAME_MINUTE * 60
 const GAME_DAY := GAME_HOUR * 24
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://dswm4girwo85i"]
+[gd_scene load_steps=7 format=4 uid="uid://dswm4girwo85i"]
 
 [ext_resource type="Script" uid="uid://u41s8yddk8oh" path="res://static/port/port.gd" id="1_fhy0p"]
 [ext_resource type="TileSet" uid="uid://bwfpf82dp4ogl" path="res://assets/tilemap/global.tres" id="1_sv8v4"]
+[ext_resource type="FontFile" uid="uid://cevna8cuq6oo4" path="res://assets/fonts/PixelOperator8/PixelOperator8-Bold.ttf" id="3_q023k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhy0p"]
 size = Vector2(62, 110)
@@ -9,9 +10,12 @@ size = Vector2(62, 110)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q023k"]
 size = Vector2(82.5, 131.5)
 
+[sub_resource type="LabelSettings" id="LabelSettings_cmemv"]
+font = ExtResource("3_q023k")
+font_size = 256
+
 [node name="Port" type="StaticBody2D" groups=["ports"]]
 script = ExtResource("1_fhy0p")
-port_name = "ENTER PORT NAME"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 56)
@@ -26,3 +30,10 @@ tile_set = ExtResource("1_sv8v4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DockingArea"]
 position = Vector2(-0.25, 54.25)
 shape = SubResource("RectangleShape2D_q023k")
+
+[node name="Title" type="Label" parent="."]
+visibility_layer = 4
+anchors_preset = -1
+offset_right = 792.0
+offset_bottom = 256.0
+label_settings = SubResource("LabelSettings_cmemv")

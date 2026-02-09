@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name MenuContainer extends CanvasLayer
 
 enum States {
 	NONE,
@@ -56,3 +56,7 @@ func hide_state(state: States) -> void:
 
 func _on_pause_menu_resume_pressed() -> void:
 	hide_state(active_state)
+	
+
+func set_map_image(img: ViewportTexture) -> void:
+	MapMenu.set_map_image(img)

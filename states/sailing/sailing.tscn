@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://r6xvq7asly0e"]
+[gd_scene load_steps=16 format=4 uid="uid://r6xvq7asly0e"]
 
 [ext_resource type="Script" uid="uid://b0mhyqyxtmrdp" path="res://states/sailing/sailing.gd" id="1_33cqx"]
 [ext_resource type="TileSet" uid="uid://bwfpf82dp4ogl" path="res://assets/tilemap/global.tres" id="1_cam2w"]
 [ext_resource type="PackedScene" uid="uid://dswm4girwo85i" path="res://static/port/port.tscn" id="2_ap37q"]
 [ext_resource type="Script" uid="uid://uwgvcb4myjff" path="res://ui/canvas_modulate/canvas_modulate.gd" id="2_wn6fr"]
+[ext_resource type="PackedScene" uid="uid://dgbjgrkj4ltwm" path="res://ui/map_handler/map_handler.tscn" id="3_b1vg1"]
 [ext_resource type="PackedScene" uid="uid://ij6uqstjvrhq" path="res://entities/player/player.tscn" id="3_s7vnk"]
 [ext_resource type="PackedScene" uid="uid://cuw613txmo54q" path="res://ui/player_hud/player_hud.tscn" id="4_6gw8e"]
 [ext_resource type="Script" uid="uid://c1byps6wiuy7y" path="res://entities/player/camera_movement.gd" id="4_n5k4t"]
@@ -35,6 +36,9 @@ process_mode = 1
 script = ExtResource("1_33cqx")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+process_mode = 3
+visible = false
+visibility_layer = 2
 color = Color(0.729412, 0.72549, 0.741176, 1)
 script = ExtResource("2_wn6fr")
 day_night_gradient = SubResource("Gradient_wn6fr")
@@ -109,6 +113,7 @@ position = Vector2(574, 326.4)
 
 [node name="Camera" type="Camera2D" parent="Player" node_paths=PackedStringArray("map")]
 process_mode = 3
+visibility_layer = 3
 position_smoothing_speed = 2.5
 script = ExtResource("4_n5k4t")
 map = NodePath("../../TileMap/Ocean")
@@ -122,3 +127,6 @@ Camera = NodePath("../Player/Camera")
 
 [node name="SoundManager" parent="." instance=ExtResource("9_to1k1")]
 process_mode = 3
+
+[node name="MapHandler" parent="." node_paths=PackedStringArray("Menus") instance=ExtResource("3_b1vg1")]
+Menus = NodePath("../MenuContainer")

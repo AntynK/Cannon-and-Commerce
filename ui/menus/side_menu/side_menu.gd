@@ -4,5 +4,5 @@ extends Menu
 
 
 func enter() -> void:
-	super()
+	super ()
 	List.fill_list()
